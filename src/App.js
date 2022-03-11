@@ -1,10 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Header from "./Components/Header/Header";
 
-function App() {
+const App = ({state}) => {
   return (
-    <div>Hello</div>
+    <div>
+      <Header navItems={state.navItems} />
+    </div>
   );
-}
+};
 
 export default App;

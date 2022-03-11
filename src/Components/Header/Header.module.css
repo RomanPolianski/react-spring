@@ -1,0 +1,333 @@
+a {
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+li {
+    list-style-type: none;
+}
+.nav {
+  background: white;
+  border-bottom: 1px solid grey;
+}
+.navInnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1140px;
+  padding: 0px 20px;
+  margin: 0px auto;
+}
+.springLogo {
+  display: block;
+  height: 48px;
+  max-width: 250px;
+}
+.headerBurger {
+  display: none;
+}
+.navItems {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  min-width: 705px;
+  margin: 0 10px 0 5px;
+}
+.navItems > li {
+  flex: 1 1 auto;
+  position: relative;
+  margin: 0px 0px 0px 20px;
+  padding: 23px 0;
+}
+.hasSubmenu {
+  color: black;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease-out;
+}
+.menuArrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 10px solid rgb(80, 197, 26);
+  margin-left: 5px;
+  transition: transform 0.3s ease 0s;
+}
+.menuSublist {
+  transform: translate(20px, 0px);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 180px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 37px 30px 27px 30px;
+  opacity: 0;
+  margin: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease 0s;
+  box-shadow: 0 5px 30px 0 rgb(108 135 135 / 50%);
+}
+.menuSublist:last-child {
+    padding-right: 0;
+}
+.menuSublist li {
+  margin: 0px 0px 10px 0px;
+}
+.menuSublist li:last-child {
+  margin: 0;
+}
+.menuLink {
+  color: black;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease-out;
+}
+.menuLink:hover {
+  color: green;
+}
+.menuSublink {
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  text-decoration: none;
+}
+.menuSublink:hover {
+  color: green;
+}
+.blueLink {
+  color: blue;
+}
+.blueLink:hover {
+  color: green;
+}
+.uppercaseText {
+  padding-top: 20px;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+}
+.menuSublink {
+  color: black;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.menuSublink:hover {
+  color: green;
+}
+.externalLinkIcon {
+  height: 12px;
+  width: 12px;
+  margin-left: 5px;
+}
+@media (min-width: 1100px) {
+  .navItems > li:hover .menuSublist {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 0px);
+    pointer-events: all;
+  }
+}
+@media (max-width: 1100px) {
+  .springLogo {
+    height: 30px;
+  }
+  .menuSublist {
+    transform: translate(0px, 0px);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: auto;
+    border-radius: 5px;
+    background-color: white;
+    padding: 15px 30px 27px 30px;
+    opacity: 0;
+    margin: 0;
+    z-index: 5;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease 0s;
+    box-shadow: 0 5px 30px 0 rgb(108 135 135 / 50%);
+  }
+  .navItems > li {
+    align-items: center;
+  }
+  .navItems > li.active .menuSublist {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0px, 0px);
+    pointer-events: all;
+  }
+  .navItems > li.active .menuArrow {
+    transform: rotate(-180deg);
+  }
+  .hasSubmenu {
+    flex: 1 1 auto;
+  }
+  .menuArrow {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 10px solid rgb(80, 197, 26);
+    transition: transform 0.3s ease 0s;
+  }
+}
+@media (max-width: 900px) {
+  .springLogo {
+    height: 30px;
+  }
+  .headerBurger {
+    z-index: 5;
+    display: block;
+    position: relative;
+    width: 19px;
+    height: 14px;
+    cursor: pointer;
+    margin: 15px 0px 15px 0px;
+  }
+  .headerBurger span,
+  .headerBurger::before,
+  .headerBurger::after {
+    left: 0;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    transition: all 0.7s ease 0s;
+    background-color: black;
+  }
+  .headerBurger::before,
+  .headerBurger::after {
+    content: "";
+  }
+  .headerBurger::before {
+    top: 0;
+  }
+  .headerBurger::after {
+    bottom: 0;
+  }
+  .headerBurger span {
+    top: 50%;
+    transform: scale(1) translate(0px, -50%);
+  }
+  .headerBurgeractive::before {
+    transform: rotate(45deg);
+    top: 8px;
+    left: -3px;
+    height: 2px;
+    width: 25px;
+    background-color: white;
+  }
+  .headerBurgeractive::after {
+    transform: rotate(-45deg);
+    bottom: 4px;
+    left: -3px;
+    height: 2px;
+    width: 25px;
+    background-color: white;
+  }
+  .headerBurgeractive span {
+    transform: scale(0);
+  }
+  .menuBody {
+    display: block;
+    position: fixed;
+    top: 500%;
+    left: 0;
+    right: 0;
+    width: auto;
+    max-height: 0;
+    overflow: hidden;
+    background-color: black;
+    padding: 80px 60px 60px 40px;
+    transition: max-height 0.7s ease-out, top 0.7s ease-out 0s;
+  }
+  .menuBodyactive {
+    top: 0%;
+    bottom: 0;
+    overflow: auto;
+    max-height: 1000px;
+    transition: max-height 0.7s ease 0s, top 0.7s ease;
+    z-index: 4;
+  }
+  .navItems {
+    display: block;
+    min-width: auto;
+  }
+  .navItems > li {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px 0px 5px 0px;
+    border-bottom: 1px solid gray;
+    padding: 15px 0;
+    transform-origin: top;
+    overflow: hidden;
+    height: auto;
+  }
+  .navItems > li.active {
+    border-bottom: none;
+  }
+  .navItems > li:last-child {
+    margin-bottom: 0;
+  }
+  .navItems > li > a {
+    font-size: 1.8rem;
+    color: white;
+    z-index: 1;
+  }
+  .navItems > li.active .menuSublist {
+    padding: 15px 0px 0px 0px;
+    margin: 15px 0px 0px 0px;
+    border-top: 1px solid gray;
+    background-color: black;
+    max-height: 600px;
+    transition: max-height 2s ease, opacity 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  .menuSublist {
+    box-shadow: none;
+    opacity: 0;
+    position: relative;
+    transform: none;
+    top: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0px 0px 0px 0px;
+    border-radius: 0px;
+    margin: 0px 0px 0px 0px;
+    transition: none;
+    transition: max-height 0.5s ease;
+  }
+  .blueLink {
+    color: rgb(166, 206, 197);
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+  .menuSublist li {
+    margin: 0px 0px 10px 0px;
+  }
+  .menuSublist li:last-child {
+    margin: 0;
+  }
+  .uppercaseText {
+    color: white;
+    padding: 20px 0 10px 0;
+    font-size: 0.8rem;
+  }
+  .menuSublink {
+    color: rgb(166, 206, 197);
+    font-size: 25px;
+  }
+}
