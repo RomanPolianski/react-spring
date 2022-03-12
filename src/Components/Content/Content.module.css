@@ -32,11 +32,110 @@
   transition: all 0.5s ease 0;
 }
 
+.projects {
+  display: grid;
+  grid-template-columns: 5fr 5fr;
+  margin: 0px 0px 0px 3%;
+}
+
+.project {
+  display: block;
+  margin-top: 3%;
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  background: #fff;
+  padding-right: 5%;
+  transform: translateY(0);
+  transition: all 0.2s;
+}
+
+.project:hover {
+  box-shadow: 0 10px 70px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+  transition: all 0.2s ease 0s;
+}
+.projectIconHeader {
+  width: 70px;
+  height: 70px;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 20px;
+}
+
+.projectHeader {
+  position: absolute;
+  top: 0;
+  left: 120px;
+  font-size: 24px;
+  display: block;
+}
+
+.projectDescription {
+  margin-left: 21%;
+  hyphens: auto;
+  line-height: 1.5;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 10%;
+}
+
 @media (max-width: 800px) {
   .projInput {
     position: relative;
     left: 20%;
     margin: 5% auto;
     width: 50%;
+  }
+
+  .projects {
+    grid-template-columns: 5fr;
+    padding: 0px 0px;
+    margin: 0px 0px 0px 4%;
+  }
+
+  .project {
+    margin-left: 0;
+    margin-top: 3%;
+  }
+
+  .projectHeader {
+    font-size: 16px;
+  }
+
+  .projectDescription {
+    margin-left: 18%;
+    hyphens: auto;
+    line-height: 1.5;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10%;
+  }
+}
+
+@media (max-width: 350px) {
+  .projectIconHeader {
+    width: 40px;
+    height: 40px;
+  }
+
+  .project {
+    height: 200px;
+  }
+
+  .projectDescription {
+    font-size: 14px;
+  }
+
+  .projectHeader {
+    left: 80px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 250px) {
+  .project {
+    width: 200px;
+    height: 250px;
   }
 }

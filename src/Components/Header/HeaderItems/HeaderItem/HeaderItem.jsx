@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import s from "../../Header.module.css";
-import classNames from "classnames";
+import React, { useState } from 'react'
+import s from '../../Header.module.css'
+import classNames from 'classnames'
 
 const HeaderItem = ({ title, submenu }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const onArrowClickHandler = () => {
-    setIsOpen(!isOpen);
-  };
-  const item = submenu.map((item) => {
-    if (item === "View all Projects") {
+    setIsOpen(!isOpen)
+  }
+  const item = submenu.map(item => {
+    if (item === 'View all Projects') {
       return (
         <li>
           <a href="#section" className={s.blueLink}>
             {item}
           </a>
         </li>
-      );
+      )
     }
-    if (item === "Development Tools") {
-      return <li className={s.uppercaseText}>{item}</li>;
+    if (item === 'Development Tools') {
+      return <li className={s.uppercaseText}>{item}</li>
     }
-    if (item === "Spring Initializr") {
+    if (item === 'Spring Initializr') {
       return (
         <li>
           <a className={s.menuSublink} href="#s">
             {item}
           </a>
         </li>
-      );
+      )
     }
     return (
       <li>
@@ -35,8 +35,8 @@ const HeaderItem = ({ title, submenu }) => {
           {item}
         </a>
       </li>
-    );
-  });
+    )
+  })
   return (
     <>
       {submenu.length !== 0 ? (
@@ -55,7 +55,7 @@ const HeaderItem = ({ title, submenu }) => {
         </li>
       )}
     </>
-  );
-};
+  )
+}
 
-export default HeaderItem;
+export default HeaderItem
