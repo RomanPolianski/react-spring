@@ -73,6 +73,7 @@ li {
   pointer-events: none;
   transition: all 0.3s ease 0s;
   box-shadow: 0 5px 30px 0 rgb(108 135 135 / 50%);
+  z-index: 5;
 }
 .menuSublist:last-child {
     padding-right: 0;
