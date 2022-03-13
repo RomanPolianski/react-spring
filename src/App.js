@@ -7,7 +7,7 @@ const App = ({state}) => {
   return (
     <div className={s.wrapper}>
       <Header navItems={state.navItems} />
-      <Content projects={state.projects} />
+      <Content projects={state.projects} projectsAttic={state.projectsAttic}/>
     </div>
   );
 };

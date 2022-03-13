@@ -210,7 +210,7 @@ const state = {
       submenu: ["Overview", "Events", "Team"],
     },
   ],
-  atticProjects: [
+  projectsAttic: [
     {
       id: 1,
       title: "Spring IO Platform",
@@ -255,56 +255,6 @@ const state = {
       id: 9,
       title: "Spring XD",
       text: "Simplifies the development of big data applications by addressing ingestion, analytics, batch jobs and data export.",
-    },
-  ],
-  projectsFooterItems: [
-    {
-      id: 1,
-      title: "Get ahead",
-      text: "VMware offers training and certification to turbo-charge your progress.",
-      linkText: "Learn more",
-    },
-    {
-      id: 2,
-      title: "Get support",
-      text: "Spring Runtime offers support and binaries for OpenJDK™, Spring, and Apache Tomcat® in one simple subscription.",
-      linkText: "Learn more",
-    },
-    {
-      id: 3,
-      title: "Upcoming events",
-      text: "Check out all the upcoming events in the Spring community",
-      linkText: "View all",
-    },
-  ],
-  footerLinks: [
-    {
-      id: 1,
-      titleLink: "Why Spring",
-      links: [
-        "Microservices",
-        "Reactive",
-        "Event Driven",
-        "Cloud",
-        "Web Applications",
-        "Serverless",
-        "Batch",
-      ],
-    },
-    {
-      id: 2,
-      titleLink: "Learn",
-      links: ["Quickstart", "Guides", "Blog"],
-    },
-    {
-      id: 3,
-      titleLink: "Community",
-      links: ["Events", "Team"],
-    },
-    {
-      id: 4,
-      titleLink: "Projects",
-      links: ["Training", "Support", "Thank You"],
     },
   ],
 };
