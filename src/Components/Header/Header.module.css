@@ -239,7 +239,7 @@ li {
   .menuBody {
     display: block;
     position: fixed;
-    top: 500%;
+    top: -500%;
     left: 0;
     right: 0;
     width: auto;
@@ -247,14 +247,14 @@ li {
     overflow: hidden;
     background-color: black;
     padding: 80px 60px 60px 40px;
-    transition: max-height 0.7s ease-out, top 0.7s ease-out 0s;
+    transition: max-height 0.5s ease-out, top 0.5s ease-out 0s;
   }
   .menuBodyactive {
     top: 0%;
     bottom: 0;
     overflow: auto;
     max-height: 1000px;
-    transition: max-height 0.7s ease 0s, top 0.7s ease;
+    transition: max-height 0.5s ease 0s, top 0.5s ease;
     z-index: 4;
   }
   .navItems {
@@ -289,7 +289,7 @@ li {
     border-top: 1px solid gray;
     background-color: black;
     max-height: 600px;
-    transition: max-height 2s ease, opacity 0.3s ease;
+    transition: max-height 1s ease-out, opacity 0.3s ease;
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -308,7 +308,7 @@ li {
     border-radius: 0px;
     margin: 0px 0px 0px 0px;
     transition: none;
-    transition: max-height 0.5s ease;
+    transition: max-height 0.3s ease;
   }
   .blueLink {
     color: rgb(166, 206, 197);
