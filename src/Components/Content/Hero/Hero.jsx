@@ -4,7 +4,7 @@ import classNames from 'classnames'
 const Hero = () => {
   return (
     <section>
-      <div className={s.container}>
+      <div className={classNames(s.container, s.hero) }>
         <h1 className={classNames (s.h1, s.bold)}>Projects</h1>
         <p className={s.pLarge}>
           From configuration to security, web apps to big data—whatever the
