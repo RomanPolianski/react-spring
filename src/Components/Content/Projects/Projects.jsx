@@ -25,7 +25,11 @@ const Projects = ({ projects }) => {
           />
           <div className={s.projContent}>
             <div className={s.bgGrey}>
-              <ProjectsRender projects={filteredProjects} />
+              {filteredProjects.length > 0 ? (
+                <ProjectsRender projects={filteredProjects} />
+              ) : (
+                <div className={s.projNoResult}>No Results</div>
+              )}
             </div>
           </div>
         </section>
