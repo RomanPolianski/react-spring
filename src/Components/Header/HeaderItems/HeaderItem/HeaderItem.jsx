@@ -7,10 +7,10 @@ const HeaderItem = ({ title, submenu }) => {
   const onArrowClickHandler = () => {
     setIsOpen(!isOpen)
   }
-  const item = submenu.map(item => {
+  const item = submenu.map((item, index) => {
     if (item === 'View all Projects') {
       return (
-        <li>
+        <li key={index}>
           <a href="#section" className={s.blueLink}>
             {item}
           </a>
@@ -18,11 +18,11 @@ const HeaderItem = ({ title, submenu }) => {
       )
     }
     if (item === 'Development Tools') {
-      return <li className={s.uppercaseText}>{item}</li>
+      return <li key={index} className={s.uppercaseText}>{item}</li>
     }
     if (item === 'Spring Initializr') {
       return (
-        <li>
+        <li key={index}>
           <a className={s.menuSublink} href="#s">
             {item}
           </a>
@@ -30,7 +30,7 @@ const HeaderItem = ({ title, submenu }) => {
       )
     }
     return (
-      <li>
+      <li key={index}>
         <a href="#s" className={s.menuSublink}>
           {item}
         </a>
@@ -40,7 +40,7 @@ const HeaderItem = ({ title, submenu }) => {
   return (
     <>
       {submenu.length !== 0 ? (
-        <li className={classNames({ [s.active]: isOpen })}>
+        <li  className={classNames({ [s.active]: isOpen })}>
           <a href="#s" className={s.hasSubmenu}>
             {title}
           </a>
@@ -48,7 +48,7 @@ const HeaderItem = ({ title, submenu }) => {
           <ul className={s.menuSublist}>{item}</ul>
         </li>
       ) : (
-        <li>
+        <li  >
           <a href="#s" className={s.menuLink}>
             {title}
           </a>

@@ -3,7 +3,7 @@ import s from "../Content.module.css";
 
 const ProjectsRender = ({ projects }) => {
   const projItem = [...projects].map((i) => {
-    return <ProjectItem image={i.imageUrl} title={i.title} text={i.text} />;
+    return <ProjectItem image={i.imageUrl} title={i.title} text={i.text} key={i.id} />;
   });
   return <div className={s.projects}>{projItem}</div>;
 };

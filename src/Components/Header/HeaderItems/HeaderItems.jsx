@@ -6,7 +6,7 @@ import HeaderItem from "./HeaderItem/HeaderItem";
 const HeaderItems = ({ navItems }) => {
   const [isOpen, setIsOpen] = useState(false);
   const headerItem = [...navItems].map((i) => {
-    return <HeaderItem title={i.title} submenu={i.submenu} />;
+    return <HeaderItem title={i.title} submenu={i.submenu} key={i.id} />;
   });
   const onBurgerClickHandler = () => {
     setIsOpen(!isOpen);

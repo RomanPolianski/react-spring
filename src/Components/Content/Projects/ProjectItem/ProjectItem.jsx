@@ -1,10 +1,10 @@
 import classNames from "classnames";
 import s from "../../Content.module.css";
 
-const ProjectItem = ({ image, title, text }) => {
+const ProjectItem = ({ image, title, text, id }) => {
   return (
     <div className={classNames(s.project, s.bgWhite)}>
-      <div >
+      <div>
         <img className={s.projectIconHeader} src={image} />
         <div className={s.projectHeader}>
           <h3 className={s.bold}>{title}</h3>

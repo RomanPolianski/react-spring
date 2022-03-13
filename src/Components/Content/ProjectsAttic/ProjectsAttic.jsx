@@ -4,7 +4,7 @@ import ProjectAttic from "./ProjectAttic/ProjectAttic";
 
 const ProjectsAttic = ({ projectsAttic }) => {
   const projectAttic = [...projectsAttic].map((i) => {
-    return <ProjectAttic title={i.title} text={i.text} id={i.id} />;
+    return <ProjectAttic title={i.title} text={i.text} key={i.id} />;
   });
   return (
     <div className={classNames(s.atticProjContent, s.bgGrey) }>
