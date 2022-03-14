@@ -1,15 +1,16 @@
-import Hero from "./Hero/Hero";
-import Projects from "./Projects/Projects";
-import ProjectsAttic from "./ProjectsAttic/ProjectsAttic";
+import React from 'react';
+import Hero from './Hero/Hero';
+import Projects from './Projects/Projects';
+import ProjectsAttic from './ProjectsAttic/ProjectsAttic';
 
-const Content = ({ projects, projectsAttic }) => {
+function Content({ projects, projectsAttic }) {
   return (
     <>
       <Hero />
       <Projects projects={projects} />
-      <ProjectsAttic projectsAttic={projectsAttic}/>
+      <ProjectsAttic projectsAttic={projectsAttic} />
     </>
   );
-};
+}
 
 export default Content;

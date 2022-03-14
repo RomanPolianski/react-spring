@@ -1,17 +1,15 @@
-import classNames from "classnames";
-import { useState } from "react";
-import s from "../Content.module.css";
-import ProjectsRender from "./ProjectsRender";
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import s from '../Content.module.css';
+import ProjectsRender from './ProjectsRender';
 
-const Projects = ({ projects }) => {
-  const [value, setValue] = useState("");
-  let v = value.toLowerCase();
-  const filteredProjects = [...projects].filter((project) => {
-    return (
-      project.title.toLowerCase().includes(v) ||
-      project.text.toLowerCase().includes(v)
-    );
-  });
+function Projects({ projects }) {
+  const [value, setValue] = useState('');
+  const v = value.toLowerCase();
+  const filteredProjects = [...projects].filter((project) => (
+    project.title.toLowerCase().includes(v)
+      || project.text.toLowerCase().includes(v)
+  ));
 
   return (
     <div className={classNames(s.content, s.bgGrey)}>
@@ -36,6 +34,6 @@ const Projects = ({ projects }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Projects;

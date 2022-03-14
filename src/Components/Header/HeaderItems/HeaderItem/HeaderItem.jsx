@@ -1,61 +1,62 @@
-import React, { useState } from 'react'
-import s from '../../Header.module.css'
-import classNames from 'classnames'
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import s from '../../Header.module.css';
 
-const HeaderItem = ({ title, submenu }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const onArrowClickHandler = () => {
-    setIsOpen(!isOpen)
-  }
-  const item = submenu.map((item, index) => {
-    if (item === 'View all Projects') {
+function HeaderItem({ title, submenu }) {
+  const [isOpen, setIsOpen] = useState(false);
+  const onArrowClickHndlr = () => {
+    setIsOpen(!isOpen);
+  };
+  const item = submenu.map((i) => {
+    if (i === 'View all Projects') {
       return (
-        <li key={index}>
+        <li>
           <a href="#section" className={s.blueLink}>
-            {item}
+            {i}
           </a>
         </li>
-      )
+      );
     }
-    if (item === 'Development Tools') {
-      return <li key={index} className={s.uppercaseText}>{item}</li>
+    if (i === 'Development Tools') {
+      return <li className={s.uppercaseText}>{i}</li>;
     }
-    if (item === 'Spring Initializr') {
+    if (i === 'Spring Initializr') {
       return (
-        <li key={index}>
+        <li>
           <a className={s.menuSublink} href="#s">
-            {item}
+            {i}
           </a>
         </li>
-      )
+      );
     }
     return (
-      <li key={index}>
+      <li>
         <a href="#s" className={s.menuSublink}>
-          {item}
+          {i}
         </a>
       </li>
-    )
-  })
+    );
+  });
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {submenu.length !== 0 ? (
-        <li  className={classNames({ [s.active]: isOpen })}>
+        <li className={classNames({ [s.active]: isOpen })}>
           <a href="#s" className={s.hasSubmenu}>
             {title}
           </a>
-          <span className={s.menuArrow} onClick={onArrowClickHandler} />
+          <span role="button" tabIndex={0} className={s.menuArrow} aria-label="open menu" onClick={onArrowClickHndlr} onKeyDown={onArrowClickHndlr} />
           <ul className={s.menuSublist}>{item}</ul>
         </li>
       ) : (
-        <li  >
+        <li>
           <a href="#s" className={s.menuLink}>
             {title}
           </a>
         </li>
       )}
     </>
-  )
+  );
 }
 
-export default HeaderItem
+export default HeaderItem;

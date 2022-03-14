@@ -1,11 +1,14 @@
-import classNames from "classnames";
-import s from "../../Content.module.css";
+import React from 'react';
+import classNames from 'classnames';
+import s from '../../Content.module.css';
 
-const ProjectItem = ({ image, title, text, id }) => {
+function ProjectItem({
+  image, title, text,
+}) {
   return (
     <div className={classNames(s.project, s.bgWhite)}>
       <div>
-        <img className={s.projectIconHeader} src={image} />
+        <img className={s.projectIconHeader} src={image} alt="Project Icon" />
         <div className={s.projectHeader}>
           <h3 className={s.bold}>{title}</h3>
         </div>
@@ -15,6 +18,6 @@ const ProjectItem = ({ image, title, text, id }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ProjectItem;

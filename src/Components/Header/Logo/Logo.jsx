@@ -1,6 +1,7 @@
+import React from 'react';
 import s from '../Header.module.css';
 
-const Logo = () => {
+function Logo() {
   return (
     <img
       className={s.springLogo}
@@ -8,6 +9,6 @@ const Logo = () => {
       alt="Spring"
     />
   );
-};
+}
 
 export default Logo;

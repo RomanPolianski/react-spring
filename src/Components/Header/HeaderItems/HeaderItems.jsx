@@ -1,13 +1,13 @@
-import s from "../Header.module.css";
-import classNames from "classnames";
-import { useState } from "react";
-import HeaderItem from "./HeaderItem/HeaderItem";
+import classNames from 'classnames';
+import React, { useState } from 'react';
+import s from '../Header.module.css';
+import HeaderItem from './HeaderItem/HeaderItem';
 
-const HeaderItems = ({ navItems }) => {
+function HeaderItems({ navItems }) {
   const [isOpen, setIsOpen] = useState(false);
-  const headerItem = [...navItems].map((i) => {
-    return <HeaderItem title={i.title} submenu={i.submenu} key={i.id} />;
-  });
+  const headerItem = [...navItems].map((i) => (
+    <HeaderItem title={i.title} submenu={i.submenu} key={i.id} />
+  ));
   const onBurgerClickHandler = () => {
     setIsOpen(!isOpen);
   };
@@ -19,6 +19,10 @@ const HeaderItems = ({ navItems }) => {
           [s.headerBurgeractive]: isOpen,
         })}
         onClick={onBurgerClickHandler}
+        onKeyDown={onBurgerClickHandler}
+        aria-label="open menu"
+        role="button"
+        tabIndex={0}
       >
         <span />
       </div>
@@ -31,6 +35,6 @@ const HeaderItems = ({ navItems }) => {
       </nav>
     </div>
   );
-};
+}
 
 export default HeaderItems;
