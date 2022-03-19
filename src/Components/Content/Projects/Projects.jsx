@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 import s from '../Content.module.css';
 import ProjectsRender from './ProjectsRender';
 
-function Projects({ projects }) {
+function Projects() {
+  const projects = useSelector((state) => state.renderItems.projects);
   const [value, setValue] = useState('');
   const v = value.toLowerCase();
   const filteredProjects = [...projects].filter((project) => (

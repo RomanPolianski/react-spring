@@ -1,16 +1,33 @@
 import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Content from './Components/Content/Content';
 import Header from './Components/Header/Header';
 import s from './App.css';
 import Login from './Components/Login/Login';
 
-function App({ state }) {
+function App() {
   return (
     <div className={s.wrapper}>
-      <Header navItems={state.navItems} />
-      <Content projects={state.projects} projectsAttic={state.projectsAttic} />
-      <Login />
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
     </div>
+  );
+}
+
+function Main() {
+  const isAuth = useSelector((state) => state.auth.isAuth);
+
+  if (!isAuth) {
+    return <Navigate to="/login" />;
+  }
+  return (
+    <>
+      <Header />
+      <Content />
+    </>
   );
 }
 

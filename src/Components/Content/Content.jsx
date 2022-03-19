@@ -3,12 +3,12 @@ import Hero from './Hero/Hero';
 import Projects from './Projects/Projects';
 import ProjectsAttic from './ProjectsAttic/ProjectsAttic';
 
-function Content({ projects, projectsAttic }) {
+function Content() {
   return (
     <>
       <Hero />
-      <Projects projects={projects} />
-      <ProjectsAttic projectsAttic={projectsAttic} />
+      <Projects />
+      <ProjectsAttic />
     </>
   );
 }
