@@ -17,5 +17,6 @@ module.exports = {
     'react/prop-types': 'off',
     'react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'no-param-reassign': 0,
   },
 };
