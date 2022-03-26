@@ -1,13 +1,18 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchProjects = createAsyncThunk(
   'itemsRender/fetchProjects',
   async () => {
-    const response = await fetch('https://server-react-spring.herokuapp.com/projects');
-    const data = await response.json();
-    return data;
+    try {
+      const response = await fetch(
+        'https://server-react-spring.herokuapp.com/projects',
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   },
 );
 
@@ -121,7 +126,7 @@ const itemsRenderSlice = createSlice({
     ],
   },
   extraReducers: {
-    [fetchProjects.pending]: (state, action) => {
+    [fetchProjects.pending]: (state) => {
       state.status = 'pending';
       state.error = null;
     },

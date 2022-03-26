@@ -1,6 +1,5 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-use-before-define */
 /* eslint-disable no-param-reassign */
+/* eslint-disable-next-line no-use-before-define */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const sendLoginData = createAsyncThunk(
@@ -19,7 +18,7 @@ export const sendLoginData = createAsyncThunk(
       );
       const dataResponse = await response.json();
       if (response.status === 200) {
-        dispatch(validateData());
+        dispatch(setLoginSuccess());
       } else if (response.status === 401) {
         dispatch(setErrorLogin(dataResponse.status));
       }
@@ -39,7 +38,7 @@ const authSlice = createSlice({
     errMessage: null,
   },
   reducers: {
-    validateData(state) {
+    setLoginSuccess(state) {
       state.isAuth = !state.isAuth;
     },
     setErrorLogin(state, action) {
@@ -47,13 +46,8 @@ const authSlice = createSlice({
       state.errMessage = action.payload;
     },
   },
-  // extraReducers: {
-  //   [sendLoginData.fulfilled]: (state, action) => {
-  //     state.message = action.payload;
-  //   },
-  // },
 });
 
-export const { validateData, setErrorLogin } = authSlice.actions;
+export const { setLoginSuccess, setErrorLogin } = authSlice.actions;
 
 export default authSlice.reducer;
