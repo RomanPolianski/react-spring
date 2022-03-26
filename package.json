@@ -39,6 +39,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "https://server-react-spring.herokuapp.com",
   "extends": [
     "airbnb",
     "airbnb/hooks"

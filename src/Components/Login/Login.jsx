@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import s from './Login.module.css';
 import InputField from './InputField/InputField';
-import { validateData } from '../../Redux/authSlice';
+import { sendLoginData } from '../../Redux/authSlice';
 
 function Login() {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function Login() {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        dispatch(validateData(values));
+        dispatch(sendLoginData(values));
       }}
     >
       {(formik) => (
@@ -45,7 +45,13 @@ function Login() {
             <InputField label="Username" name="username" type="text" />
             <InputField label="Password" name="password" type="password" />
             {loginErr ? <div className={s.errorLogin}>{errMessage}</div> : null}
-            <button type="submit" disabled={!formik.isValid} className={s.submitButton}>Submit</button>
+            <button
+              type="submit"
+              disabled={!formik.isValid}
+              className={s.submitButton}
+            >
+              Submit
+            </button>
           </Form>
         </div>
       )}
