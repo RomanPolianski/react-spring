@@ -1,4 +1,4 @@
-import { sendLoginData } from '../Redux/authSlice';
+import { sendLoginData } from './src/Redux/authSlice';
 
 describe('Login success', () => {
   test('dispatch login action', async () => {
