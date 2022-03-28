@@ -22,7 +22,8 @@ function Main() {
   const isAuth = useSelector((state) => state.auth.isAuth);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProjects());
+    const value = '';
+    dispatch(fetchProjects(value));
   }, []);
 
   if (!isAuth) {

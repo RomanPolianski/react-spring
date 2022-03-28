@@ -2,10 +2,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchProjects = createAsyncThunk(
   'itemsRender/fetchProjects',
-  async () => {
+  async (value) => {
     try {
       const response = await fetch(
-        'https://server-react-spring.herokuapp.com/projects',
+        `https://server-react-spring.herokuapp.com/projects?value=${value}`,
       );
       const data = await response.json();
       return data;

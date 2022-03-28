@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-use-before-define */
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from '../Content.module.css';
 import ProjectsRender from './ProjectsRender';
+import { fetchProjects } from '../../../Redux/itemsRenderSlice';
 
 function Projects() {
-  const projects = useSelector((state) => state.renderItems.projects);
+  const [textValue, setTextValue] = useState('');
   const [value, setValue] = useState('');
-  const v = value.toLowerCase();
-  const filteredProjects = [...projects].filter((project) => (
-    project.title.toLowerCase().includes(v)
-      || project.text.toLowerCase().includes(v)
-  ));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProjects(value));
+  }, [value]);
+
+  const projects = useSelector((state) => state.renderItems.projects);
+  const filteredProjects = [...projects];
 
   return (
     <div className={classNames(s.content, s.bgGrey)}>
@@ -21,8 +26,9 @@ function Projects() {
             placeholder="Find your project"
             type="text"
             className={s.projInput}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setTextValue(e.target.value)}
           />
+          <button onClick={() => setValue(textValue)}>Find</button>
           <div className={s.projContent}>
             <div className={s.bgGrey}>
               {filteredProjects.length > 0 ? (
