@@ -5,6 +5,6 @@ describe('Login success', () => {
     const thunk = sendLoginData({ username: 'admin', password: '1234' });
     const dispatchMock = jest.fn();
     await thunk(dispatchMock);
-    expect(dispatchMock).toBeCalledTimes(1);
+    expect(dispatchMock).toBeCalledTimes(3);
   });
 });
