@@ -4,11 +4,11 @@ import React from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import s from './Login.module.css';
+import s from './SignUp.module.css';
 import InputField from '../common/InputField';
 import { sendLoginData } from '../../Redux/authSlice';
 
-function Login() {
+function SignUp() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
   const loginErr = useSelector((state) => state.auth.loginErr);
@@ -19,12 +19,12 @@ function Login() {
   }
 
   const validate = Yup.object({
-    userName: Yup.string()
-      .max(15, 'Max length is 15 characters')
-      .required('Username is Required'),
-    password: Yup.string()
-      .min(4, 'Min length is 4 characters')
-      .required('Password is Required'),
+    userName: Yup.string().required('Username is Required'),
+    password: Yup.string().required('Password is Required'),
+    repeatPassword: Yup.string().required('Repeat Password is Required'),
+    firstName: Yup.string().required('Name is Required'),
+    lastName: Yup.string().required('Surname is Required'),
+    age: Yup.string().required('Age is Required'),
   });
 
   return (
@@ -40,10 +40,18 @@ function Login() {
     >
       {(formik) => (
         <div className={s.container}>
-          <p className={s.h1}>Login.</p>
+          <p className={s.h1}>SignUp.</p>
           <Form className={s.form}>
             <InputField label="Username" name="userName" type="text" />
             <InputField label="Password" name="password" type="password" />
+            <InputField
+              label="Repeat Password"
+              name="repeatPassword"
+              type="password"
+            />
+            <InputField label="Name" name="firstName" type="text" />
+            <InputField label="Surname" name="lastName" type="text" />
+            <InputField label="Age" name="age" type="number" />
             {loginErr ? <div className={s.errorLogin}>{errMessage}</div> : null}
             <button
               type="submit"
@@ -59,4 +67,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default SignUp;

@@ -6,6 +6,7 @@ import Header from './Components/Header/Header';
 import s from './App.css';
 import Login from './Components/Login/Login';
 import { fetchProjects } from './Redux/itemsRenderSlice';
+import SignUp from './Components/Registration/SignUp';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
       </Routes>
     </div>
   );
@@ -27,7 +29,7 @@ function Main() {
   }, []);
 
   if (!isAuth) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/signUp" />;
   }
   return (
     <>

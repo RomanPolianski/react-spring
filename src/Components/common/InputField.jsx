@@ -2,7 +2,7 @@
 import React from 'react';
 import { ErrorMessage, useField } from 'formik';
 import classNames from 'classnames';
-import s from '../Login.module.css';
+import s from '../Login/Login.module.css';
 
 function InputField({ label, ...props }) {
   const [field, meta] = useField(props);

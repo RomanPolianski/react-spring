@@ -1,26 +1,17 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable-next-line no-use-before-define */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import AuthService from '../services/AuthService';
 
 export const sendLoginData = createAsyncThunk(
   'auth/sendLoginData',
   async (data, { dispatch }) => {
     try {
-      const response = await fetch(
-        'https://server-react-spring.herokuapp.com/login',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        },
-      );
-      const dataResponse = await response.json();
+      const { userName, password } = data;
+      const response = await AuthService.login(userName, password);
+      localStorage.setItem('token', response.data.accessToken);
       if (response.status === 200) {
         dispatch(setLoginSuccess());
-      } else if (response.status === 401) {
-        dispatch(setErrorLogin(dataResponse.status));
       }
     } catch (error) {
       console.log(error);
