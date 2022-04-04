@@ -3,7 +3,7 @@ import { Formik, Form } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import s from './Login.module.css';
 import InputField from '../common/InputField';
 import { sendLoginData } from '../../Redux/authSlice';
@@ -17,12 +17,6 @@ function Login() {
   if (isAuth) {
     return <Navigate to="/" />;
   }
-
-  const navigate = useNavigate();
-  const routeChange = () => {
-    const path = '../signUp';
-    navigate(path);
-  };
 
   const validate = Yup.object({
     userName: Yup.string()
@@ -61,7 +55,7 @@ function Login() {
           </Form>
           <div>
             Or
-            <button type="button" onClick={routeChange}>Sign Up</button>
+            <Link to="/signUp">SignUp</Link>
           </div>
         </div>
       )}
