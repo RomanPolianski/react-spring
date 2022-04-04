@@ -53,9 +53,9 @@ function Login() {
               Submit
             </button>
           </Form>
-          <div>
-            Or
-            <Link to="/signUp">SignUp</Link>
+          <div className={s.redirContainer}>
+            No account? |
+            <Link to="/signUp" className={s.linkBlue}> Sign Up</Link>
           </div>
         </div>
       )}

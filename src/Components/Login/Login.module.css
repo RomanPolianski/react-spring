@@ -7,6 +7,17 @@
   font-size: 40px;
   text-align: center;
 }
+.linkBlue {
+  color: blue;
+}
+.redirContainer {
+  position: relative;
+  text-align: center;
+  margin: 1% 0% 1% 17%;
+  padding: 10px;
+  width: 60%;
+  font-size: 1rem;
+}
 .formInnerContainer {
   display: flex;
   flex-flow: column wrap;

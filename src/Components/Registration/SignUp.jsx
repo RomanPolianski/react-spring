@@ -49,7 +49,7 @@ function SignUp() {
             <InputField label="Username" name="userName" type="text" />
             <InputField label="Password" name="password" type="password" />
             <InputField
-              label="Repeat Password"
+              label="Repeat PW"
               name="repeatPassword"
               type="password"
             />
@@ -65,9 +65,9 @@ function SignUp() {
               Submit
             </button>
           </Form>
-          <div>
-            Or
-            <Link to="/login">Login</Link>
+          <div className={s.redirContainer}>
+            Registered? |
+            <Link to="/login" className={s.linkBlue}> Login</Link>
           </div>
         </div>
       )}

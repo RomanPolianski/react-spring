@@ -10,6 +10,7 @@ export const sendLoginData = createAsyncThunk(
       const { userName, password } = data;
       const response = await AuthService.login(userName, password);
       if (response.status === 200) {
+        localStorage.removeItem('accessToken');
         localStorage.setItem('accessToken', response.data.accessToken);
         dispatch(setLoginSuccess(response.data.accessToken));
       }
@@ -35,7 +36,10 @@ export const sendSignUpData = createAsyncThunk(
         age,
       );
       if (response.status === 200) {
-        dispatch(setSignUpSuccess());
+        dispatch(setSignUpSuccess(response.data));
+      } else {
+        dispatch(setSignUpError(response.data));
+        console.log(response.data.message);
       }
     } catch (error) {
       console.log(error);
@@ -51,24 +55,29 @@ const authSlice = createSlice({
     username: null,
     password: null,
     loginErr: false,
-    errMessage: null,
-    accessToken: null,
+    message: null,
+    accessToken: localStorage.getItem('accessToken'),
   },
   reducers: {
-    setLoginSuccess(state, action) {
+    setLoginSuccess(state) {
       state.isAuth = !state.isAuth;
-      state.accessToken = action.payload;
     },
     setErrorLogin(state, action) {
       state.loginErr = !state.loginErr;
-      state.errMessage = action.payload;
+      state.message = action.payload;
     },
-    setSignUpSuccess(state) {
+    setSignUpSuccess(state, action) {
       state.isSignedUp = !state.isSignedUp;
+      state.message = action.payload.message;
+    },
+    setSignUpError(state, action) {
+      state.message = action.payload.message;
     },
   },
 });
 
-export const { setLoginSuccess, setErrorLogin, setSignUpSuccess } = authSlice.actions;
+export const {
+  setLoginSuccess, setErrorLogin, setSignUpSuccess, setSignUpError,
+} = authSlice.actions;
 
 export default authSlice.reducer;

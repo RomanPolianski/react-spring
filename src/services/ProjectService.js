@@ -1,5 +1,4 @@
-/* eslint-disable import/no-named-as-default */
-import AuthAPI from '../axios';
+import AuthAPI from '../axios/authAxios';
 
 export default class ProjectService {
   static async getProjects() {
