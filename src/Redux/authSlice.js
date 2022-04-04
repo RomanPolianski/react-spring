@@ -9,9 +9,33 @@ export const sendLoginData = createAsyncThunk(
     try {
       const { userName, password } = data;
       const response = await AuthService.login(userName, password);
-      localStorage.setItem('token', response.data.accessToken);
       if (response.status === 200) {
-        dispatch(setLoginSuccess());
+        localStorage.setItem('accessToken', response.data.accessToken);
+        dispatch(setLoginSuccess(response.data.accessToken));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  },
+);
+
+export const sendSignUpData = createAsyncThunk(
+  'auth/sendSignUpData',
+  async (data, { dispatch }) => {
+    try {
+      const {
+        userName, password, repeatPassword, firstName, lastName, age,
+      } = data;
+      const response = await AuthService.signUp(
+        userName,
+        password,
+        repeatPassword,
+        firstName,
+        lastName,
+        age,
+      );
+      if (response.status === 200) {
+        dispatch(setSignUpSuccess());
       }
     } catch (error) {
       console.log(error);
@@ -23,22 +47,28 @@ const authSlice = createSlice({
   name: 'auth',
   initialState: {
     isAuth: false,
+    isSignedUp: false,
     username: null,
     password: null,
     loginErr: false,
     errMessage: null,
+    accessToken: null,
   },
   reducers: {
-    setLoginSuccess(state) {
+    setLoginSuccess(state, action) {
       state.isAuth = !state.isAuth;
+      state.accessToken = action.payload;
     },
     setErrorLogin(state, action) {
       state.loginErr = !state.loginErr;
       state.errMessage = action.payload;
     },
+    setSignUpSuccess(state) {
+      state.isSignedUp = !state.isSignedUp;
+    },
   },
 });
 
-export const { setLoginSuccess, setErrorLogin } = authSlice.actions;
+export const { setLoginSuccess, setErrorLogin, setSignUpSuccess } = authSlice.actions;
 
 export default authSlice.reducer;

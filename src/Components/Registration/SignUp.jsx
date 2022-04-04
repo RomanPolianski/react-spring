@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import s from './SignUp.module.css';
 import InputField from '../common/InputField';
-import { sendLoginData } from '../../Redux/authSlice';
+import { sendSignUpData } from '../../Redux/authSlice';
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -32,10 +32,14 @@ function SignUp() {
       initialValues={{
         userName: '',
         password: '',
+        repeatPassword: '',
+        firstName: '',
+        lastName: '',
+        age: '',
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        dispatch(sendLoginData(values));
+        dispatch(sendSignUpData(values));
       }}
     >
       {(formik) => (

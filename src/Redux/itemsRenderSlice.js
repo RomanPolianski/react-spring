@@ -1,14 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import ProjectService from '../services/ProjectService';
 
 export const fetchProjects = createAsyncThunk(
   'itemsRender/fetchProjects',
-  async (value) => {
+  async (_, { dispatch }) => {
     try {
-      const response = await fetch(
-        `https://server-react-spring.herokuapp.com/projects?value=${value}`,
-      );
-      const data = await response.json();
-      return data;
+      const response = await ProjectService.getProjects();
+      if (response.status === 200) {
+        dispatch(fetchProjectsSuccess(response.data));
+      }
+      return response;
     } catch (error) {
       console.log(error);
       return error;
@@ -125,16 +126,12 @@ const itemsRenderSlice = createSlice({
       },
     ],
   },
-  extraReducers: {
-    [fetchProjects.pending]: (state) => {
-      state.status = 'pending';
-      state.error = null;
-    },
-    [fetchProjects.fulfilled]: (state, action) => {
-      state.status = 'resolved';
-      state.projects = action.payload.projects;
+  reducers: {
+    fetchProjectsSuccess(state, action) {
+      state.projects = action.payload;
     },
   },
 });
+export const { fetchProjectsSuccess } = itemsRenderSlice.actions;
 
 export default itemsRenderSlice.reducer;

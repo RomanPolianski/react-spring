@@ -12,7 +12,7 @@ function Projects() {
   const [value, setValue] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchProjects(value));
+    dispatch(fetchProjects());
   }, [value]);
 
   const projects = useSelector((state) => state.renderItems.projects);
