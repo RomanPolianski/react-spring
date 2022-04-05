@@ -15,7 +15,7 @@ export const sendLoginData = createAsyncThunk(
         dispatch(setLoginSuccess(response.data.accessToken));
       }
     } catch (error) {
-      console.log(error);
+      dispatch(setErrorLogin(error.message));
     }
   },
 );
@@ -37,12 +37,9 @@ export const sendSignUpData = createAsyncThunk(
       );
       if (response.status === 200) {
         dispatch(setSignUpSuccess(response.data));
-      } else {
-        dispatch(setSignUpError(response.data));
-        console.log(response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      dispatch(setSignUpError(error));
     }
   },
 );
@@ -71,6 +68,7 @@ const authSlice = createSlice({
       state.message = action.payload.message;
     },
     setSignUpError(state, action) {
+      state.isSignedUp = true;
       state.message = action.payload.message;
     },
   },

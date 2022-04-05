@@ -1,28 +1,16 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-use-before-define */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import classNames from 'classnames';
-import { useDispatch, useSelector } from 'react-redux';
-import { debounce } from 'lodash';
+import { useSelector } from 'react-redux';
 import s from '../Content.module.css';
 import ProjectsRender from './ProjectsRender';
-import { fetchProjects } from '../../../Redux/itemsRenderSlice';
 
 function Projects() {
   const [value, setValue] = useState('');
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchProjects());
-  }, [value]);
-
   const projects = useSelector((state) => state.renderItems.projects);
   const filteredProjects = [...projects];
-
-  const deb = useCallback(debounce((text) => setValue(text), 1000), []);
-
-  const handleText = (text) => {
-    deb(text);
-  };
 
   return (
     <div className={classNames(s.content, s.bgGrey)}>
@@ -32,7 +20,7 @@ function Projects() {
             placeholder="Find your project"
             type="text"
             className={s.projInput}
-            onChange={(e) => handleText(e.target.value)}
+            onChange={(e) => setValue(e.target.value)}
           />
           <div className={s.projContent}>
             <div className={s.bgGrey}>

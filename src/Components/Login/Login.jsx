@@ -11,8 +11,7 @@ import { sendLoginData } from '../../Redux/authSlice';
 function Login() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const loginErr = useSelector((state) => state.auth.loginErr);
-  const errMessage = useSelector((state) => state.auth.errMessage);
+  const message = useSelector((state) => state.auth.message);
 
   if (isAuth) {
     return <Navigate to="/" />;
@@ -44,7 +43,7 @@ function Login() {
           <Form className={s.form}>
             <InputField label="Username" name="userName" type="text" />
             <InputField label="Password" name="password" type="password" />
-            {loginErr ? <div className={s.errorLogin}>{errMessage}</div> : null}
+            {message ? <div className={s.errorLogin}>{message}</div> : null}
             <button
               type="submit"
               disabled={!formik.isValid}

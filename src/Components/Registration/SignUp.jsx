@@ -11,8 +11,7 @@ import { sendSignUpData } from '../../Redux/authSlice';
 function SignUp() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const loginErr = useSelector((state) => state.auth.loginErr);
-  const errMessage = useSelector((state) => state.auth.errMessage);
+  const message = useSelector((state) => state.auth.message);
 
   if (isAuth) {
     return <Navigate to="/" />;
@@ -56,7 +55,7 @@ function SignUp() {
             <InputField label="Name" name="firstName" type="text" />
             <InputField label="Surname" name="lastName" type="text" />
             <InputField label="Age" name="age" type="number" />
-            {loginErr ? <div className={s.errorLogin}>{errMessage}</div> : null}
+            {message ? <div className={s.errorLogin}>{message}</div> : null}
             <button
               type="submit"
               disabled={!formik.isValid}
