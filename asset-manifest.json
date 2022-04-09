@@ -1,19 +1,21 @@
 {
   "files": {
     "main.css": "/react-spring/static/css/main.bce17d5f.css",
-    "main.js": "/react-spring/static/js/main.f16748fe.js",
-    "static/css/329.c7c06878.chunk.css": "/react-spring/static/css/329.c7c06878.chunk.css",
-    "static/js/329.48d722fa.chunk.js": "/react-spring/static/js/329.48d722fa.chunk.js",
+    "main.js": "/react-spring/static/js/main.fbdd571c.js",
+    "static/css/191.ba1c4fe3.chunk.css": "/react-spring/static/css/191.ba1c4fe3.chunk.css",
+    "static/js/191.38a7c990.chunk.js": "/react-spring/static/js/191.38a7c990.chunk.js",
     "static/js/787.95ee206e.chunk.js": "/react-spring/static/js/787.95ee206e.chunk.js",
+    "static/js/182.866bf77a.chunk.js": "/react-spring/static/js/182.866bf77a.chunk.js",
     "index.html": "/react-spring/index.html",
     "main.bce17d5f.css.map": "/react-spring/static/css/main.bce17d5f.css.map",
-    "main.f16748fe.js.map": "/react-spring/static/js/main.f16748fe.js.map",
-    "329.c7c06878.chunk.css.map": "/react-spring/static/css/329.c7c06878.chunk.css.map",
-    "329.48d722fa.chunk.js.map": "/react-spring/static/js/329.48d722fa.chunk.js.map",
-    "787.95ee206e.chunk.js.map": "/react-spring/static/js/787.95ee206e.chunk.js.map"
+    "main.fbdd571c.js.map": "/react-spring/static/js/main.fbdd571c.js.map",
+    "191.ba1c4fe3.chunk.css.map": "/react-spring/static/css/191.ba1c4fe3.chunk.css.map",
+    "191.38a7c990.chunk.js.map": "/react-spring/static/js/191.38a7c990.chunk.js.map",
+    "787.95ee206e.chunk.js.map": "/react-spring/static/js/787.95ee206e.chunk.js.map",
+    "182.866bf77a.chunk.js.map": "/react-spring/static/js/182.866bf77a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bce17d5f.css",
-    "static/js/main.f16748fe.js"
+    "static/js/main.fbdd571c.js"
   ]
 }
