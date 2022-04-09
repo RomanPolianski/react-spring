@@ -1,16 +1,22 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-use-before-define */
-import React, { useCallback, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from '../Content.module.css';
 import ProjectsRender from './ProjectsRender';
+import { fetchSearchProjects } from '../../../Redux/itemsRenderSlice';
 
 function Projects() {
   const [value, setValue] = useState('');
   const projects = useSelector((state) => state.renderItems.projects);
   const filteredProjects = [...projects];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSearchProjects(value));
+  }, [value]);
 
   return (
     <div className={classNames(s.content, s.bgGrey)}>

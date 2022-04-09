@@ -17,6 +17,22 @@ export const fetchProjects = createAsyncThunk(
   },
 );
 
+export const fetchSearchProjects = createAsyncThunk(
+  'itemsRender/fetchSearchProjects',
+  async (title, { dispatch }) => {
+    try {
+      const response = await ProjectService.getSearchProjects(title);
+      if (response.status === 200) {
+        dispatch(fetchProjectsSuccess(response.data));
+      }
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+);
+
 const itemsRenderSlice = createSlice({
   name: 'itemsRender',
   initialState: {
