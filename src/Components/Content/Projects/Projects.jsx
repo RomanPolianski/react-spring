@@ -4,12 +4,14 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
+import { useDebounce } from 'use-debounce';
 import s from '../Content.module.css';
 import ProjectsRender from './ProjectsRender';
 import { fetchSearchProjects } from '../../../Redux/itemsRenderSlice';
 
 function Projects() {
-  const [value, setValue] = useState('');
+  const [text, setText] = useState('');
+  const [value] = useDebounce(text, 1000);
   const projects = useSelector((state) => state.renderItems.projects);
   const filteredProjects = [...projects];
   const dispatch = useDispatch();
@@ -26,7 +28,7 @@ function Projects() {
             placeholder="Find your project"
             type="text"
             className={s.projInput}
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setText(e.target.value)}
           />
           <div className={s.projContent}>
             <div className={s.bgGrey}>
