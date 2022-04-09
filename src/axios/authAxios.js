@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'http://localhost:5000/api';
+export const API_URL = 'https://server-react-spring.herokuapp.com/api';
 
 const AuthAPI = axios.create({
   withCredentials: true,

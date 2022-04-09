@@ -1,3 +1,4 @@
+import AuthAPI from '../axios/authAxios';
 import $api from '../axios/axios';
 
 export default class AuthService {
@@ -12,6 +13,6 @@ export default class AuthService {
   }
 
   static async refreshToken() {
-    return $api.post('/refresh-token');
+    return AuthAPI.get('/refresh-token');
   }
 }

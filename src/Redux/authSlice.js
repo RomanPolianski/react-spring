@@ -10,7 +10,6 @@ export const sendLoginData = createAsyncThunk(
       const { userName, password } = data;
       const response = await AuthService.login(userName, password);
       if (response.status === 200) {
-        localStorage.removeItem('accessToken');
         localStorage.setItem('accessToken', response.data.accessToken);
         dispatch(setLoginSuccess(response.data.accessToken));
       }
