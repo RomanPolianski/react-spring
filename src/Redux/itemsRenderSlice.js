@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import ProjectService from '../services/ProjectService';
 
@@ -9,7 +10,6 @@ export const fetchProjects = createAsyncThunk(
       if (response.status === 200) {
         dispatch(fetchProjectsSuccess(response.data));
       }
-      return response;
     } catch (error) {
       console.log(error);
       return error;
@@ -25,7 +25,6 @@ export const fetchSearchProjects = createAsyncThunk(
       if (response.status === 200) {
         dispatch(fetchProjectsSuccess(response.data));
       }
-      return response;
     } catch (error) {
       console.log(error);
       return error;

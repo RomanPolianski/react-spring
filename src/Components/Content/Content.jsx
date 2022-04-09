@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Hero from './Hero/Hero';
-import Projects from './Projects/Projects';
 import ProjectsAttic from './ProjectsAttic/ProjectsAttic';
+
+const Projects = lazy(() => import('./Projects/Projects'));
 
 function Content() {
   return (
     <>
       <Hero />
-      <Projects />
+      <Suspense fallback={<div>Loading</div>}>
+        <Projects />
+      </Suspense>
       <ProjectsAttic />
     </>
   );
