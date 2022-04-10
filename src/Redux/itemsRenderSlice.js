@@ -37,7 +37,7 @@ const itemsRenderSlice = createSlice({
   initialState: {
     status: null,
     error: null,
-    projects: null,
+    projects: [],
     navItems: [
       {
         id: '1',
