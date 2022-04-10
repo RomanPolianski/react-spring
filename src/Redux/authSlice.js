@@ -50,32 +50,38 @@ const authSlice = createSlice({
     isSignedUp: false,
     username: null,
     password: null,
-    loginErr: false,
     message: null,
     messageLogin: null,
-    accessToken: localStorage.getItem('accessToken'),
   },
   reducers: {
     setLoginSuccess(state) {
       state.isAuth = !state.isAuth;
     },
     setErrorLogin(state, action) {
-      state.loginErr = !state.loginErr;
       state.messageLogin = action.payload;
     },
     setSignUpSuccess(state, action) {
-      state.isSignedUp = !state.isSignedUp;
       state.message = action.payload.message;
     },
     setSignUpError(state, action) {
-      state.isSignedUp = true;
       state.message = action.payload.message;
+    },
+    removeErrorLogin(state) {
+      state.messageLogin = null;
+    },
+    removeErrorSignUp(state) {
+      state.message = null;
     },
   },
 });
 
 export const {
-  setLoginSuccess, setErrorLogin, setSignUpSuccess, setSignUpError,
+  setLoginSuccess,
+  setErrorLogin,
+  setSignUpSuccess,
+  setSignUpError,
+  removeErrorLogin,
+  removeErrorSignUp,
 } = authSlice.actions;
 
 export default authSlice.reducer;

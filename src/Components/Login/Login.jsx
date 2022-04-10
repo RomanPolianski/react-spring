@@ -1,18 +1,21 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Formik, Form } from 'formik';
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import s from './Login.module.css';
 import InputField from '../common/InputField';
-import { sendLoginData } from '../../Redux/authSlice';
+import { removeErrorLogin, sendLoginData } from '../../Redux/authSlice';
 
 function Login() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
   const message = useSelector((state) => state.auth.messageLogin);
+  useEffect(() => () => {
+    dispatch(removeErrorLogin());
+  }, []);
 
   if (isAuth) {
     return <Navigate to="/" />;
@@ -59,7 +62,10 @@ function Login() {
           </Form>
           <div className={s.redirContainer}>
             No account? |
-            <Link to="/signUp" className={s.linkBlue}> Sign Up</Link>
+            <Link to="/signUp" className={s.linkBlue}>
+              {' '}
+              Sign Up
+            </Link>
           </div>
         </div>
       )}
