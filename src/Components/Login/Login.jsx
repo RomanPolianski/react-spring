@@ -4,6 +4,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import s from './Login.module.css';
 import InputField from '../common/InputField';
 import { sendLoginData } from '../../Redux/authSlice';
@@ -11,10 +12,15 @@ import { sendLoginData } from '../../Redux/authSlice';
 function Login() {
   const dispatch = useDispatch();
   const isAuth = useSelector((state) => state.auth.isAuth);
-  const message = useSelector((state) => state.auth.message);
+  const message = useSelector((state) => state.auth.messageLogin);
 
   if (isAuth) {
     return <Navigate to="/" />;
+  }
+  if (message === 'Request failed with status code 400') {
+    toast.error('Login Error!', {
+      toastId: 1,
+    });
   }
 
   const validate = Yup.object({
@@ -43,7 +49,6 @@ function Login() {
           <Form className={s.form}>
             <InputField label="Username" name="userName" type="text" />
             <InputField label="Password" name="password" type="password" />
-            {message ? <div className={s.errorLogin}>{message}</div> : null}
             <button
               type="submit"
               disabled={!formik.isValid}

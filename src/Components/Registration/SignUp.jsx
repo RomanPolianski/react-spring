@@ -4,6 +4,7 @@ import React from 'react';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import s from './SignUp.module.css';
 import InputField from '../common/InputField';
 import { sendSignUpData } from '../../Redux/authSlice';
@@ -15,6 +16,19 @@ function SignUp() {
 
   if (isAuth) {
     return <Navigate to="/" />;
+  }
+  if (message === 'User registered successfully') {
+    toast.success('User registered successfully', {
+      toastId: 3,
+    });
+  } else if (message === 'Request failed with status code 401') {
+    toast.error('Already registered', {
+      toastId: 4,
+    });
+  } else if (message === 'Request failed with status code 400') {
+    toast.error('Check passwords! Must contain 1 number and 1 letter and match!', {
+      toastId: 4,
+    });
   }
 
   const validate = Yup.object({
@@ -55,7 +69,6 @@ function SignUp() {
             <InputField label="Name" name="firstName" type="text" />
             <InputField label="Surname" name="lastName" type="text" />
             <InputField label="Age" name="age" type="number" />
-            {message ? <div className={s.errorLogin}>{message}</div> : null}
             <button
               type="submit"
               disabled={!formik.isValid}

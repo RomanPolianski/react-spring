@@ -52,6 +52,7 @@ const authSlice = createSlice({
     password: null,
     loginErr: false,
     message: null,
+    messageLogin: null,
     accessToken: localStorage.getItem('accessToken'),
   },
   reducers: {
@@ -60,7 +61,7 @@ const authSlice = createSlice({
     },
     setErrorLogin(state, action) {
       state.loginErr = !state.loginErr;
-      state.message = action.payload;
+      state.messageLogin = action.payload;
     },
     setSignUpSuccess(state, action) {
       state.isSignedUp = !state.isSignedUp;

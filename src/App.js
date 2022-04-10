@@ -2,11 +2,15 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { lazy, Suspense, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Header from './Components/Header/Header';
 import s from './App.css';
 import Login from './Components/Login/Login';
 import SignUp from './Components/Registration/SignUp';
 import { fetchProjects } from './Redux/itemsRenderSlice';
+import 'react-toastify/dist/ReactToastify.css';
+
+toast.configure();
 
 const Content = lazy(() => import('./Components/Content/Content'));
 
@@ -28,6 +32,9 @@ function Main() {
   if (!isAuth) {
     return <Navigate to="/login" />;
   }
+  toast.success('Logged In', {
+    toastId: 1,
+  });
 
   const dispatch = useDispatch();
   useEffect(() => {
