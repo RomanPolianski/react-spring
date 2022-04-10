@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const API_URL = 'https://server-react-spring.herokuapp.com/api';
 
-const $api = axios.create({
+const instance = axios.create({
   withCredentials: true,
   baseURL: API_URL,
   headers: {
@@ -10,4 +10,4 @@ const $api = axios.create({
   },
 });
 
-export default $api;
+export default instance;
